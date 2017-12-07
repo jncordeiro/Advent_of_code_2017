@@ -1,6 +1,6 @@
 /*
  ============================================================================
- Name        :  2.c
+ Name        :  2_1.c
  Author      :  jncordeiro
  Version     :  1
  Description :  Advent_of_code 2/12/2017
