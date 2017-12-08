@@ -13,42 +13,51 @@
 
 int main(){
 
-    int i;
-    int c, Start, CheckSum;
-    int Num = 0;
-    int max, min, d;
-    int end;
-    Start = 1;
+    int i,f, g;
+    int CheckSum;
+    int c[16];
+    int done = 0;
+    float r, d;
+
+    f = 0;
     CheckSum = 0;
-   while(Start){
 
-        i = max = min = 0;
-        d = 0;
+    while(f < 16){
 
-        while(c != '\n'){
+       i = 0;
 
-            scanf("%d", &c);
+       while(i <16){
 
-            if(i == 0){
-                max = c;
-                min = c;
-            }
-
-            if(c > max)max = c;
-
-            if(c <min && c != 10 && c != ' ')min = c;
-
+            scanf("%d", &c[i]);
             i++;
-            end = getchar();
-            if(c == -1)Start = 0;
-            if(end == '\n')break;
-        }
-        c = 0;
-        d = max - min;
-        CheckSum += d;
-        printf("\nMax: %d, Min: %d\n", max, min);
-        printf("\nCheckSum: %d, d: %d\n", CheckSum, d);
-    }
+       }
+
+       i = 0;
+       g = 0;
+
+       while(g < 16 && done != 1){
+
+           while(i <16 && done != 1){
+
+               if(g == i)i++;
+
+               r = c[g] % c[i];
+               d = c[g] / c[i];
+
+               if(r == 0){
+
+                   CheckSum += (c[g] / c[i]);
+
+                   done = 1;
+               }
+               i++;
+           }
+           i = 0;
+           g++;
+       }
+       done = 0;
+       f++;
+   }
 
    printf("CheckSum:%d\n", CheckSum);
 
