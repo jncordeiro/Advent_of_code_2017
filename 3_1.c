@@ -14,7 +14,7 @@
 
 int main(){
 
-    int M[11][11];
+    int M[603][603];
     int x = 0;
     int y = 0;
     int h , v, h_2, v_2;
@@ -24,58 +24,47 @@ int main(){
     int left, right, up, down;
     int print;
     int param;
-    v = h = 0;
-    while(h < 11){
-        while(v < 11){
-            M[h][v]=0;
-            v++;
-        }
-        v = 0;
-        h++;
-    }
 
-    h = 5;
-    v = 5;
+    h = 301;
+    v = 301;
     Num = 1;
     arc = 1;
     up = left = down = 0;
     right = 1;
     print = 1;
     param = -1;
-    printf("\nright\n");
-    while(Num != 121){
-        //while(Num <= pow(2,arc+1)+1){
+
+    while(Num != 363609){
+
         while(Num <= print){
-        //while(h != arc + 1 && v != arc +1 || Num == 1){
-            printf("\nNum: %d,h: %d,v: %d, arc: %d, print: %d,param: %d\n", Num, h, v, arc, print, param);
 
                 M[h][v] = Num;
+                if(Num == 361527){
+                    printf("\nDif: %d\nNum: %d,h: %d,v: %d, arc: %d, print: %d,param: %d\n",(301-h)+(v-301), Num, h, v, arc, print, param);
+                }
 
-                //printf("%d\t",M[h][v]);
-               //if(Num == 1)arc++;
                if(up){
                     h--;
-                    printf("\nNum: %d,h: %d,v: %d, arc: %d, print: %d,param: %d\n", Num, h, v, arc, print, param);
-                    if((h-3) == arc -(param)){
+                    if((h-299) == arc -(param)){
                         left = 1;
                         up = 0;
                     }
                 }else if(down){
                     h++;
-                    if((h-3) == arc+(1)){
+                    if((h-299) == arc+(1)){
                         right = 1;
                         down = 0;
                     }
                 }else if(left){
                     v--;
-                    if((v-3) == arc-(param)){
+                    if((v-299) == arc-(param)){
 
                         down = 1;
                         left = 0;
                     }
                 }else if(right){
                     v++;
-                    if(((v-3) == arc+(param) && (Num+1 !=pow(2,arc+1)+1)) || Num == pow(2,arc+1)+1){
+                    if(((v-299) == arc+(param) && (Num+1 !=pow(2,arc+1)+1)) || Num == pow(2,arc+1)+1){
 
                         up = 1;
                         right = 0;
@@ -83,44 +72,24 @@ int main(){
                 }
                 Num++;
                 v_2 = h_2 = 0;
-                while(h_2 < 11){
-                    while(v_2 < 11){
-                        printf(" %2d ",M[h_2][v_2]);
-                        v_2++;
-                    }
-                    printf("\n");
-                    v_2 = 0;
-                    h_2++;
-                }
-                getchar();
-                if(Num >121)break;
-                if(up){
-                    printf("\nup\n");
-                }else if(down){
-                    printf("\ndown\n");
-                }else if(left){
-                    printf("\nleft\n");
-                }else if(right){
-                    printf("\nright\n");
-                }
+
        }
         right = left = down = 0;
         up = 1;
        arc++;
        param += 2;
-       print = Num + pow(2,arc+1)-1;
-       printf("\n%d\n",print);
-       if(Num >121)break;
+       print = pow(param+2,2);
+       if(Num >363609)break;
     }
-    v = h = 0;
-    while(h < 11){
-        while(v < 11){
-            printf("%d\t",M[h][v]);
+    /*v = h = 0;
+    while(h < 121){
+        while(v < 121){
+            printf(" %6d ",M[h][v]);
             v++;
         }
         printf("\n");
         v = 0;
         h++;
-    }
+    }*/
     return(0);
 }
