@@ -14,7 +14,7 @@
 
 int main(){
 
-    int M[5][5];
+    int M[11][11];
     int x = 0;
     int y = 0;
     int h , v, h_2, v_2;
@@ -25,8 +25,8 @@ int main(){
     int print;
     int param;
     v = h = 0;
-    while(h < 5){
-        while(v < 5){
+    while(h < 11){
+        while(v < 11){
             M[h][v]=0;
             v++;
         }
@@ -34,8 +34,8 @@ int main(){
         h++;
     }
 
-    h = 2;
-    v = 2;
+    h = 5;
+    v = 5;
     Num = 1;
     arc = 1;
     up = left = down = 0;
@@ -43,11 +43,11 @@ int main(){
     print = 1;
     param = -1;
     printf("\nright\n");
-    while(Num != 25){
+    while(Num != 121){
         //while(Num <= pow(2,arc+1)+1){
         while(Num <= print){
         //while(h != arc + 1 && v != arc +1 || Num == 1){
-                printf("\nNum: %d,h: %d,v: %d, arc: %d, print: %d\n", Num, h, v, arc, print);
+            printf("\nNum: %d,h: %d,v: %d, arc: %d, print: %d,param: %d\n", Num, h, v, arc, print, param);
 
                 M[h][v] = Num;
 
@@ -55,27 +55,27 @@ int main(){
                //if(Num == 1)arc++;
                if(up){
                     h--;
-                    printf("\nNum: %d,h: %d,v: %d, arc: %d, print: %d\n", Num, h, v, arc, print);
-                    if((h) == arc -(param)){
+                    printf("\nNum: %d,h: %d,v: %d, arc: %d, print: %d,param: %d\n", Num, h, v, arc, print, param);
+                    if((h-3) == arc -(param)){
                         left = 1;
                         up = 0;
                     }
                 }else if(down){
                     h++;
-                    if((h) == arc+(1)){
+                    if((h-3) == arc+(1)){
                         right = 1;
                         down = 0;
                     }
                 }else if(left){
                     v--;
-                    if((v) == arc-(param)){
+                    if((v-3) == arc-(param)){
 
                         down = 1;
                         left = 0;
                     }
                 }else if(right){
                     v++;
-                    if(((v) == arc+(param) && (Num+1 !=pow(2,arc+1)+1)) || Num == pow(2,arc+1)+1){
+                    if(((v-3) == arc+(param) && (Num+1 !=pow(2,arc+1)+1)) || Num == pow(2,arc+1)+1){
 
                         up = 1;
                         right = 0;
@@ -83,9 +83,9 @@ int main(){
                 }
                 Num++;
                 v_2 = h_2 = 0;
-                while(h_2 < 5){
-                    while(v_2 < 5){
-                        printf("%d\t",M[h_2][v_2]);
+                while(h_2 < 11){
+                    while(v_2 < 11){
+                        printf(" %2d ",M[h_2][v_2]);
                         v_2++;
                     }
                     printf("\n");
@@ -93,7 +93,7 @@ int main(){
                     h_2++;
                 }
                 getchar();
-                if(Num >25)break;
+                if(Num >121)break;
                 if(up){
                     printf("\nup\n");
                 }else if(down){
@@ -110,11 +110,11 @@ int main(){
        param += 2;
        print = Num + pow(2,arc+1)-1;
        printf("\n%d\n",print);
-       if(Num >25)break;
+       if(Num >121)break;
     }
     v = h = 0;
-    while(h < 5){
-        while(v < 5){
+    while(h < 11){
+        while(v < 11){
             printf("%d\t",M[h][v]);
             v++;
         }
