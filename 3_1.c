@@ -22,6 +22,7 @@ int main(){
     int Num;
     int arc;
     int left, right, up, down;
+    int print;
     v = h = 0;
     while(h < 5){
         while(v < 5){
@@ -38,42 +39,41 @@ int main(){
     arc = 1;
     up = left = down = 0;
     right = 1;
-
+    print = 1;
     printf("\nright\n");
     while(Num != 25){
-        while(Num <= pow(2,arc+1)+1){
-        //while(h != arc + 1 && v != arc +1){
-                if(Num == 2 || Num == 3)printf("\nh: %d,v: %d ", h, v);
+        //while(Num <= pow(2,arc+1)+1){
+        while(Num <= print){
+        //while(h != arc + 1 && v != arc +1 || Num == 1){
+                printf("\nh: %d,v: %d, arc: %d\n", h, v, arc);
 
                 M[h][v] = Num;
 
                 //printf("%d\t",M[h][v]);
-                if(Num == 1)arc++;
+               //if(Num == 1)arc++;
                if(up){
                     h--;
                     if((h+1) == arc){
-                        printf("\nleft\n");
                         left = 1;
                         up = 0;
                     }
                 }else if(down){
                     h++;
                     if((h-1) == arc){
-                        printf("\nright\n");
                         right = 1;
                         down = 0;
                     }
                 }else if(left){
                     v--;
                     if((v+1) == arc){
-                        printf("\ndown\n");
+
                         down = 1;
                         left = 0;
                     }
                 }else if(right){
                     v++;
                     if(((v-1) == arc && (Num+1 !=pow(2,arc+1)+1)) || Num == pow(2,arc+1)+1){
-                        printf("\nup\n");
+
                         up = 1;
                         right = 0;
                     }
@@ -91,8 +91,21 @@ int main(){
                 }
                 getchar();
                 if(Num >25)break;
+                if(up){
+                    printf("\nup\n");
+                }else if(down){
+                    printf("\ndown\n");
+                }else if(left){
+                    printf("\nleft\n");
+                }else if(right){
+                    printf("\nright\n");
+                }
        }
+        right = left = down = 0;
+        up = 1;
        arc++;
+       print = Num + pow(2,arc+1)+1;
+       printf("\n%d\n",print);
        if(Num >25)break;
     }
     v = h = 0;
