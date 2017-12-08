@@ -23,6 +23,7 @@ int main(){
     int arc;
     int left, right, up, down;
     int print;
+    int param;
     v = h = 0;
     while(h < 5){
         while(v < 5){
@@ -40,12 +41,13 @@ int main(){
     up = left = down = 0;
     right = 1;
     print = 1;
+    param = -1;
     printf("\nright\n");
     while(Num != 25){
         //while(Num <= pow(2,arc+1)+1){
         while(Num <= print){
         //while(h != arc + 1 && v != arc +1 || Num == 1){
-                printf("\nh: %d,v: %d, arc: %d\n", h, v, arc);
+                printf("\nNum: %d,h: %d,v: %d, arc: %d, print: %d\n", Num, h, v, arc, print);
 
                 M[h][v] = Num;
 
@@ -53,26 +55,27 @@ int main(){
                //if(Num == 1)arc++;
                if(up){
                     h--;
-                    if((h+1) == arc){
+                    printf("\nNum: %d,h: %d,v: %d, arc: %d, print: %d\n", Num, h, v, arc, print);
+                    if((h) == arc -(param)){
                         left = 1;
                         up = 0;
                     }
                 }else if(down){
                     h++;
-                    if((h-1) == arc){
+                    if((h) == arc+(1)){
                         right = 1;
                         down = 0;
                     }
                 }else if(left){
                     v--;
-                    if((v+1) == arc){
+                    if((v) == arc-(param)){
 
                         down = 1;
                         left = 0;
                     }
                 }else if(right){
                     v++;
-                    if(((v-1) == arc && (Num+1 !=pow(2,arc+1)+1)) || Num == pow(2,arc+1)+1){
+                    if(((v) == arc+(param) && (Num+1 !=pow(2,arc+1)+1)) || Num == pow(2,arc+1)+1){
 
                         up = 1;
                         right = 0;
@@ -104,7 +107,8 @@ int main(){
         right = left = down = 0;
         up = 1;
        arc++;
-       print = Num + pow(2,arc+1)+1;
+       param += 2;
+       print = Num + pow(2,arc+1)-1;
        printf("\n%d\n",print);
        if(Num >25)break;
     }
